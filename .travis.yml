@@ -1,0 +1,9 @@
+sudo: required # we need super user permissions
+services:
+  - docker # docker is required inside the test server in which we are going to test our application
+
+before_install:
+  - docker build -t abhinandkakkadi/docker-travis-aws -f Dockerfile.dev .
+
+script:
+  - docker run abhinandkakkadi/docker-travis-aws go test ./...
