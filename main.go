@@ -7,6 +7,7 @@ import (
 
 var tpl *template.Template
 
+// Commented the code
 func main() {
 	
 	http.HandleFunc("/", index)
