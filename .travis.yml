@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run --privileged abhinandkakkadi/docker-travis-aws go test ./...
+
+deploy:
+  provider: elasticbeanstalk # provide travis ci with provider name
+  region: "us-west-1" # get this from the url created by elastic beanstalk service
+  app: "sample-application" # application name that we specified during the elastic beanstalk creation time
+  env: "Sample-application-env" # the environment name present inside the app
+  bucket_name: "elasticbeanstalk-us-west-1-567658051180" # name of bucket - travis ci zip our whole codebase and deploy it to s3. from there elastic beanstalk redeploy it.
+  bucket_path: "sample-application" # use application name as bucket-path
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY" # according to doc we don't have to wrap this in double quotes. But the proof have shown otherwise
+# the the bucket above will be used for all the elasticbeanstalk.
