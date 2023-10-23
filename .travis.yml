@@ -18,5 +18,5 @@ deploy:
   on:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: "$AWS_SECRET_KEY" # according to doc we don't have to wrap this in double quotes. But the proof have shown otherwise
+  secret_access_key: "$AWS_SECRECT_KEY" # according to doc we don't have to wrap this in double quotes. But the proof have shown otherwise
 # the the bucket above will be used for all the elasticbeanstalk.
