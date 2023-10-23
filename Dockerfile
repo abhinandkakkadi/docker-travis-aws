@@ -9,10 +9,18 @@ COPY . .
 
 RUN go build -o /go-sample
 
-FROM nginx 
+# Final stage
+FROM golang:alpine
 
-# The path is where nginx gives the static response
-COPY --from=builder /go-sample /usr/share/nginx/html 
+# Copy the Go application binary to the final image
+COPY --from=builder /go-sample /app/go-sample
 
-# for running - docker run -p 8080:80 <image-name> . (80 is the deafault port to which nginx listens to)
-# This will not work as we don't have a static content here. It's a web server
+# Set the working directory for the Go application
+WORKDIR /app
+
+# Expose the port on which your Go application will run
+# this will be used by elastic beanstalk
+EXPOSE 80
+
+# Command to run your Go application
+CMD ["./go-sample"]

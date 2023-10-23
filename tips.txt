@@ -1,0 +1,5 @@
+create an elastic beanstalk service 
+  - create an application and corresponding environment
+  - use all the service needed
+
+Create an IAM user to get secret key to give access to Travis CI 
