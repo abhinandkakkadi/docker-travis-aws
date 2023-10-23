@@ -5,6 +5,7 @@ import (
 	"text/template"
 )
 
+// template declaration
 var tpl *template.Template
 
 // Commented the code
