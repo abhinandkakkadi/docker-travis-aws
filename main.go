@@ -6,6 +6,7 @@ import (
 )
 
 // template declaration
+// update on main package
 var tpl *template.Template
 
 // Commented the code
